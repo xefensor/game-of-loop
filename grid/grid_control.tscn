@@ -17,11 +17,12 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GridCenterContainer" type="CenterContainer" parent="HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Grid" type="GridContainer" parent="HBoxContainer/GridCenterContainer"]
+[node name="Grid" type="GridContainer" parent="HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(500, 800)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 5
@@ -29,29 +30,35 @@ theme_override_constants/v_separation = 5
 columns = 2
 script = ExtResource("1_0spup")
 
-[node name="ColorRect" type="ColorRect" parent="HBoxContainer/GridCenterContainer/Grid"]
-custom_minimum_size = Vector2(344, 344)
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/CenterContainer/Grid"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="ColorRect2" type="ColorRect" parent="HBoxContainer/GridCenterContainer/Grid"]
-custom_minimum_size = Vector2(344, 344)
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer/CenterContainer/Grid"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="ColorRect3" type="ColorRect" parent="HBoxContainer/GridCenterContainer/Grid"]
-custom_minimum_size = Vector2(344, 344)
+[node name="ColorRect3" type="ColorRect" parent="HBoxContainer/CenterContainer/Grid"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="ColorRect4" type="ColorRect" parent="HBoxContainer/GridCenterContainer/Grid"]
-custom_minimum_size = Vector2(344, 344)
+[node name="ColorRect4" type="ColorRect" parent="HBoxContainer/CenterContainer/Grid"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="ColorRect5" type="ColorRect" parent="HBoxContainer/GridCenterContainer/Grid"]
-custom_minimum_size = Vector2(344, 344)
+[node name="ColorRect5" type="ColorRect" parent="HBoxContainer/CenterContainer/Grid"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="ColorRect6" type="ColorRect" parent="HBoxContainer/GridCenterContainer/Grid"]
-custom_minimum_size = Vector2(344, 344)
+[node name="ColorRect6" type="ColorRect" parent="HBoxContainer/CenterContainer/Grid"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Controls" type="HBoxContainer" parent="."]
 layout_mode = 2

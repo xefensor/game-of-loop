@@ -6,18 +6,24 @@ extends GridContainer
 
 
 func _ready() -> void:
-	center_container.resized.connect(resize_cell_minimum_size)
+	center_container.resized.connect(update_grid_size)
+	update_grid_size()
 
-	
-func resize_cell_minimum_size() -> void:
-	var grid_size: Vector2i = Vector2i(columns, get_child_count()/columns)
-	var cell_lenght: float = 0
-		
-	if grid_size.x > grid_size.y:
-		cell_lenght = (center_container.size.x - get_theme_constant("v_separation") * grid_size.x) / grid_size.x
-		
-	else:
-		cell_lenght = (center_container.size.y - get_theme_constant("h_separation") * grid_size.y) / grid_size.y
-		
-	for cell in get_children():
-		cell.custom_minimum_size = Vector2i(cell_lenght, cell_lenght)
+
+func update_grid_size() -> void:
+	if get_child_count() == 0:
+		custom_minimum_size = Vector2.ZERO
+		return
+
+	var cols = columns
+	var rows = ceil(float(get_child_count()) / cols)
+
+	var available_width = center_container.size.x - get_theme_constant("v_separation") * (cols - 1)
+	var available_height = center_container.size.y - get_theme_constant("h_separation") * (rows - 1)
+
+	var cell_size = min(available_width / cols, available_height / rows)
+
+	var total_width = cols * cell_size + get_theme_constant("v_separation") * (cols - 1)
+	var total_height = rows * cell_size + get_theme_constant("h_separation") * (rows - 1)
+
+	custom_minimum_size = Vector2(total_width-1, total_height-1) #Doesn't work without the minus ones

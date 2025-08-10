@@ -22,12 +22,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="CellGridContainer" type="GridContainer" parent="HBoxContainer/CenterContainer"]
-custom_minimum_size = Vector2(500, 800)
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/h_separation = 5
-theme_override_constants/v_separation = 5
-columns = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
 script = ExtResource("1_0spup")
 
 [node name="ColorRect" type="ColorRect" parent="HBoxContainer/CenterContainer/CellGridContainer"]

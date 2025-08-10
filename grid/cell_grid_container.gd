@@ -2,6 +2,8 @@ class_name CellGridContainer
 extends GridContainer
 
 
+var cells: Array
+
 @onready var center_container: CenterContainer = get_parent()
 
 
@@ -26,4 +28,4 @@ func update_grid_size() -> void:
 	var total_width = cols * cell_size + get_theme_constant("v_separation") * (cols - 1)
 	var total_height = rows * cell_size + get_theme_constant("h_separation") * (rows - 1)
 
-	custom_minimum_size = Vector2(total_width-1, total_height-1) #Doesn't work without the minus ones
+	custom_minimum_size = Vector2(total_width-cols+1, total_height-rows+1)

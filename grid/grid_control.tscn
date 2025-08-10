@@ -1,0 +1,107 @@
+[gd_scene load_steps=2 format=3 uid="uid://x284ob5ltoam"]
+
+[ext_resource type="Script" uid="uid://cl07g0v0smpt1" path="res://grid/grid.gd" id="1_0spup"]
+
+[node name="GridControl" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CellTypes" type="GridContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridCenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Grid" type="GridContainer" parent="HBoxContainer/GridCenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 2
+script = ExtResource("1_0spup")
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/GridCenterContainer/Grid"]
+custom_minimum_size = Vector2(344, 344)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer/GridCenterContainer/Grid"]
+custom_minimum_size = Vector2(344, 344)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="HBoxContainer/GridCenterContainer/Grid"]
+custom_minimum_size = Vector2(344, 344)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="HBoxContainer/GridCenterContainer/Grid"]
+custom_minimum_size = Vector2(344, 344)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="HBoxContainer/GridCenterContainer/Grid"]
+custom_minimum_size = Vector2(344, 344)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="HBoxContainer/GridCenterContainer/Grid"]
+custom_minimum_size = Vector2(344, 344)
+layout_mode = 2
+
+[node name="Controls" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Reset" type="Button" parent="Controls"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Reset"
+
+[node name="Edit" type="Button" parent="Controls"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Edit"
+
+[node name="VSeparator" type="VSeparator" parent="Controls"]
+layout_mode = 2
+
+[node name="PlayPause" type="Button" parent="Controls"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Play/Pause"
+
+[node name="TickSpeed" type="VBoxContainer" parent="Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TickSpeedLabel" type="Label" parent="Controls/TickSpeed"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Tick Speed"
+
+[node name="TickSpeedSlider" type="HSlider" parent="Controls/TickSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="TickCount" type="Label" parent="Controls"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Ticks: 0/100"
+
+[node name="VSeparator2" type="VSeparator" parent="Controls"]
+layout_mode = 2
+
+[node name="NextLevel" type="Button" parent="Controls"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Next Level"

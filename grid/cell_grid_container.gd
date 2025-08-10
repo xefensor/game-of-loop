@@ -1,4 +1,4 @@
-class_name ControlCellGrid
+class_name CellGridContainer
 extends GridContainer
 
 

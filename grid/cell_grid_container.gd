@@ -2,13 +2,15 @@ class_name CellGridContainer
 extends GridContainer
 
 
-var cells: Array
+var cells: Array[Array] = []
 
 @onready var center_container: CenterContainer = get_parent()
 
 
 func _ready() -> void:
 	center_container.resized.connect(update_grid_size)
+	create_cells(3, 2)
+	
 	update_grid_size()
 
 
@@ -29,3 +31,20 @@ func update_grid_size() -> void:
 	var total_height = rows * cell_size + get_theme_constant("h_separation") * (rows - 1)
 
 	custom_minimum_size = Vector2(total_width-cols+1, total_height-rows+1)
+
+
+func create_cells(cols: int, rows: int):
+	if get_child_count():
+		for child in get_children():
+			queue_free()
+	cells = []
+			
+	columns = cols
+	
+	for y in range(rows):
+		var row: Array = []
+		for x in range(cols):
+			var cell = CellColorRect.new(Vector2i(x, y))
+			row.append(cell)
+			add_child(cell)
+		cells.append(row)

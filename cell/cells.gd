@@ -3,4 +3,4 @@ extends Resource
 
 
 @export var cells: Dictionary[StringName, Cell]
-@export var priority: Array[String]
+@export var priority: Array[Cell]

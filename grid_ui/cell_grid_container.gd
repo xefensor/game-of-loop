@@ -9,7 +9,7 @@ var cells: Array[Array] = []
 
 func _ready() -> void:
 	center_container.resized.connect(update_grid_size)
-	create_cells(3, 2)
+	create_cells(3, 3)
 	
 	update_grid_size()
 

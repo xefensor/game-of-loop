@@ -25,5 +25,15 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="GridUI" parent="PanelContainer/MarginContainer" instance=ExtResource("1_ig7tw")]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.45
+
+[node name="GridUI" parent="PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_ig7tw")]
+layout_mode = 2
+size_flags_horizontal = 3

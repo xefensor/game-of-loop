@@ -9,19 +9,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="CellTypes" type="GridContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CellTypes" type="GridContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CellGridContainer" type="GridContainer" parent="HBoxContainer/CenterContainer"]
+[node name="CellGridContainer" type="GridContainer" parent="CenterContainer"]
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -54,25 +53,33 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Play/Pause"
 
-[node name="TickSpeed" type="VBoxContainer" parent="Controls"]
+[node name="GenerationTimeline" type="HSlider" parent="Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 10.0
+tick_count = 1
+ticks_on_borders = true
+
+[node name="GenerationCount" type="Label" parent="Controls"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Generation: 0/100"
+
+[node name="GenerationSpeed" type="VBoxContainer" parent="Controls"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TickSpeedLabel" type="Label" parent="Controls/TickSpeed"]
+[node name="GenerationSpeedLabel" type="Label" parent="Controls/GenerationSpeed"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-text = "Tick Speed"
+text = "Generation Speed"
 
-[node name="TickSpeedSlider" type="HSlider" parent="Controls/TickSpeed"]
+[node name="GenerationSpeedSlider" type="HSlider" parent="Controls/GenerationSpeed"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
-
-[node name="TickCount" type="Label" parent="Controls"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Ticks: 0/100"
 
 [node name="VSeparator2" type="VSeparator" parent="Controls"]
 layout_mode = 2

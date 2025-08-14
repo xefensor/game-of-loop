@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://xo7moqie5scj"]
 
-[ext_resource type="PackedScene" uid="uid://x284ob5ltoam" path="res://grid/grid_control.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://x284ob5ltoam" path="res://grid_ui/grid_control.tscn" id="1_ig7tw"]
 
 [node name="Main" type="Control"]
 layout_mode = 3

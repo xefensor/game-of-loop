@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://x284ob5ltoam"]
 
-[ext_resource type="Script" uid="uid://cl07g0v0smpt1" path="res://grid/cell_grid_container.gd" id="1_0spup"]
+[ext_resource type="Script" uid="uid://cl07g0v0smpt1" path="res://grid_ui/cell_grid_container.gd" id="1_0spup"]
 
 [node name="GridControl" type="VBoxContainer"]
 anchors_preset = 15

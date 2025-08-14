@@ -26,6 +26,13 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[file_customization]
+
+folder_colors={
+"res://cell/": "yellow",
+"res://grid_ui/": "green"
+}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

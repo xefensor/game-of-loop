@@ -3,7 +3,7 @@ extends Resource
 
 
 var cells: Dictionary[StringName, Cell]
-var priority: Array[Cell]
+var priority: Array[StringName]
 var generations: Array[SimulationState]
 
 
@@ -25,5 +25,5 @@ func calculate_generations(number_of_generations: int, generation_zero: Simulati
 	return generation_zero.cells
 
 
-func transition_cell(cell: Cell, neighbours: Array[Cells]) -> Cell:
+func transition_cell(cell: StringName, neighbours: Array[StringName]) -> StringName:
 	return cell

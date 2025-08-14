@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dda3ry0ovn2o2" path="res://cell/cell.gd" id="1_afdk7"]
 [ext_resource type="Resource" uid="uid://dvctq1uncqawv" path="res://cell/cells/empty_cell.tres" id="2_6y02d"]
-[ext_resource type="Script" uid="uid://dh2uy34hcaaew" path="res://cell/cells.gd" id="2_afdk7"]
+[ext_resource type="Script" uid="uid://dh2uy34hcaaew" path="res://cell/cell_registry.gd" id="2_afdk7"]
 [ext_resource type="Resource" uid="uid://d384tds6dsa4e" path="res://cell/cells/life_cell.tres" id="3_ld16i"]
 
 [resource]
@@ -11,5 +11,5 @@ cells = Dictionary[StringName, ExtResource("1_afdk7")]({
 &"EMPTY": ExtResource("2_6y02d"),
 &"LIFE": ExtResource("3_ld16i")
 })
-priority = Array[String](["LIFE", "EMPTY"])
+priority = Array[StringName]([])
 metadata/_custom_type_script = "uid://dh2uy34hcaaew"

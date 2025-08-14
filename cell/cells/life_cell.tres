@@ -5,8 +5,9 @@
 
 [sub_resource type="Resource" id="Resource_hrkdl"]
 script = ExtResource("1_hrkdl")
+neighbour = 1
 neighbour_count = Array[bool]([true, false, false, true, true, true, true, true])
-result_cell = &"EMPTY"
+result_cell = 0
 metadata/_custom_type_script = "uid://dshdv4kchkjl7"
 
 [resource]

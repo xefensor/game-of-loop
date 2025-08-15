@@ -5,13 +5,19 @@ extends GridContainer
 var cells: Array[Array] = []
 
 @onready var center_container: CenterContainer = get_parent()
-
+@export var gen_zero: Generation
 
 func _ready() -> void:
 	center_container.resized.connect(update_grid_size)
 	create_cells(3, 3)
 	
 	update_grid_size()
+	
+	
+	print(gen_zero.cells)
+	var sim: Simulation = Simulation.new()
+	sim.calculate_generations(5, gen_zero)
+	
 
 
 func update_grid_size() -> void:

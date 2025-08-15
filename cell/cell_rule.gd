@@ -10,13 +10,13 @@ extends Resource
 
 
 func check_amount(neighbour_amount: int) -> bool:
-	var neihbour_number: PackedInt32Array
+	var neighbour_number: PackedInt32Array
 	
 	for i in neighbour_count.size():
 		if neighbour_count[i]:
-			neihbour_number.append(i)
+			neighbour_number.append(i+1)
 	
-	for i in neihbour_number:
+	for i in neighbour_number:
 		if neighbour_amount == i:
 			return true
 	

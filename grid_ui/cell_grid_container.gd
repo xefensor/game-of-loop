@@ -36,7 +36,7 @@ func update_grid_size() -> void:
 	var total_width = cols * cell_size + get_theme_constant("v_separation") * (cols - 1)
 	var total_height = rows * cell_size + get_theme_constant("h_separation") * (rows - 1)
 
-	custom_minimum_size = Vector2(total_width-cols+1, total_height-rows+1)
+	custom_minimum_size = Vector2(total_width-cols, total_height-rows)
 
 
 func create_cells(cols: int, rows: int):

@@ -30,10 +30,7 @@ func get_transition_rule(neighbours_count: Dictionary, rules_by_priority: Array)
 func get_transition_cell(neighbours_count: Dictionary, priority: Array) -> int:
 	var rule = get_transition_rule(neighbours_count, get_rules_by_priority(priority))
 	
-	#print(neighbours_count)
 	if rule:
-		#print(rule.result_cell)
 		return rule.result_cell
 	else:
-		#print(self.color)
 		return CellRegistry.cells.find_key(self)

@@ -4,32 +4,44 @@ extends Resource
 
 var cells: Dictionary[StringName, Cell]
 var priority: Array[StringName]
-var generations: Array[SimulationState]
+var generations: Array[Generation]
 
 
-func setup(_cells: Dictionary, _priority: Array, generation_zero: SimulationState) -> void:
+func setup(_cells: Dictionary, _priority: Array, generation_zero: Generation) -> void:
 	cells = _cells
 	priority = _priority
 	generations.clear()
 	generations[0] = generation_zero.duplicate()
 
 
-func calculate_generations(number_of_generations: int, generation_zero: SimulationState) -> Array:
-	var _generations: Array[SimulationState] = [generation_zero]
+func calculate_generations(number_of_generations: int, generation_zero: Generation) -> Array:
+	var _generations: Array[Generation] = [generation_zero]
 	
 	for i in number_of_generations-1:
-		generations
+		_generations.append(next_generation(_generations[i]))
+	
+	return _generations
 	
 	
+func next_generation(generation: Generation) -> Generation:
+	var new_generation: Generation = Generation.new()
+	var cols = generation.cells.size()
+	var rows = generation.cells[0].size()
 	
-	return generation_zero.cells
+	for y in rows:
+		var row: Array = []
+		for x in cols:
+			var old_cell: Cell = CellRegistry.cells[generation.cells[x][y]]
+			var neigbours = get_neighbours(generation, Vector2i(x, y))
+			var neigbours_count = get_neighbours_count(neigbours)
+			var new_cell = old_cell.get_transition_cell(neigbours_count, CellRegistry.priority)
+			row.append(new_cell)
+		new_generation.cells.append(row)
+
+	return new_generation
 
 
-func transition_cell(cell: StringName, neighbours: Array[StringName]) -> StringName:
-	return cell
-
-
-func get_neighbours(generation: SimulationState, position: Vector2i) -> Array:
+func get_neighbours(generation: Generation, position: Vector2i) -> Array:
 	var neighbours: Array = []
 	var cols = generation.cells.size()
 	var rows = generation.cells[0].size()

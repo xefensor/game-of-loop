@@ -1,4 +1,4 @@
-class_name SimulationState
+class_name Generation
 extends Resource
 
 

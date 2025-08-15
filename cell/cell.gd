@@ -6,7 +6,7 @@ extends Resource
 @export var rules: Array[CellRule]
 
 
-func transition(neigbours: Dictionary,priority: Array) -> int:
+func get_rules_by_priority(priority: Array) -> Array:
 	var rules_by_priority: Array[CellRule] = []
 	
 	for i in priority:
@@ -14,10 +14,19 @@ func transition(neigbours: Dictionary,priority: Array) -> int:
 			if i == rule.neighbour:
 				rules_by_priority.append(rule)
 				break
-
-	for rule in rules_by_priority:
-		if neigbours.has(rule.neighbour):
-			if rule.check_amount(neigbours.rule.neighbour):
-				return rule.result_cell
 	
-	return 0
+	return rules_by_priority
+
+
+func get_transition_rule(neighbours_count: Dictionary, rules_by_priority: Array) -> CellRule:
+	for rule in rules_by_priority:
+		if neighbours_count.has(rule.neighbour):
+			if rule.check_amount(neighbours_count[rule.neighbour]):
+				return rule
+	
+	return null
+
+
+func get_transition_cell(neighbours_count: Dictionary, priority: Array) -> int:
+	var rule = get_transition_rule(neighbours_count, get_rules_by_priority(priority))
+	return rule.result_cell

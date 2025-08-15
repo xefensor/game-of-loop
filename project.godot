@@ -19,6 +19,10 @@ boot_splash/size/viewport_width=1920
 boot_splash/stretch/aspect="expand"
 boot_splash/stretch/mode="canvas_items"
 
+[autoload]
+
+CellRegistry="*res://cell/cell_registry.gd"
+
 [display]
 
 window/size/viewport_width=1920

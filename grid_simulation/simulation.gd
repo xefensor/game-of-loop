@@ -27,3 +27,40 @@ func calculate_generations(number_of_generations: int, generation_zero: Simulati
 
 func transition_cell(cell: StringName, neighbours: Array[StringName]) -> StringName:
 	return cell
+
+
+func get_neighbours(generation: SimulationState, position: Vector2i) -> Array:
+	var neighbours: Array = []
+	var cols = generation.cells.size()
+	var rows = generation.cells[0].size()
+	
+	if position.y > 0:
+		if position.x > 0:
+			neighbours.append(generation.cells[position.y-1][position.x-1])
+		neighbours.append(generation.cells[position.y-1][position.x])
+		if position.x < cols - 1:
+			neighbours.append(generation.cells[position.y-1][position.x+1])
+	if position.x > 0:
+		neighbours.append(generation.cells[position.y][position.x-1])
+	if position.x < cols - 1:
+		neighbours.append(generation.cells[position.y][position.x+1])
+	if position.y < rows - 1:
+		if position.x > 0:
+			neighbours.append(generation.cells[position.y+1][position.x-1])
+		neighbours.append(generation.cells[position.y+1][position.x])
+		if position.x < cols - 1:
+			neighbours.append(generation.cells[position.y+1][position.x+1])
+
+	return neighbours
+
+
+func get_neighbours_count(neighbours: Array) -> Dictionary:
+	var neighbours_count: Dictionary
+	
+	for neighbour in neighbours:
+		if neighbours_count.has(neighbour):
+			neighbours_count[neighbour] += 1
+		else:
+			neighbours_count[neighbour] = 1
+	
+	return neighbours_count

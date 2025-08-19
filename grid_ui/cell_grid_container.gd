@@ -9,7 +9,7 @@ var cells: Array[Array] = []
 
 func _ready() -> void:
 	center_container.resized.connect(update_grid_size)
-	create_cells(3, 3)
+	create_cells(10, 10)
 	
 	update_grid_size()
 	
@@ -50,7 +50,7 @@ func create_cells(cols: int, rows: int):
 	for y in range(rows):
 		var row: Array = []
 		for x in range(cols):
-			var cell = CellColorRect.new(Vector2i(x, y))
+			var cell = CellColorRect.new(Vector2i(x, y), Color.html("2e222f"))
 			row.append(cell)
 			add_child(cell)
 		cells.append(row)

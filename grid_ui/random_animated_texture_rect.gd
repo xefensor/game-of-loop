@@ -5,7 +5,7 @@ extends AnimatedTextureRect
 
 
 func _init(atlas_texture: AtlasTexture) -> void:
-	texture = atlas_texture
+	texture = atlas_texture.duplicate()
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	
 	flip_h = randi_range(0, 1)

@@ -13,6 +13,5 @@ metadata/_custom_type_script = "uid://dshdv4kchkjl7"
 [resource]
 script = ExtResource("2_bxfre")
 name = &"EMPTY"
-color = Color(0.368102, 0.368102, 0.368102, 1)
 rules = Array[ExtResource("1_4ijep")]([SubResource("Resource_isrbc")])
 metadata/_custom_type_script = "uid://dda3ry0ovn2o2"

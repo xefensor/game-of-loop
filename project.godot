@@ -38,6 +38,7 @@ enabled=PackedStringArray("res://addons/AnimatedTextureRect/plugin.cfg")
 
 folder_colors={
 "res://cell/": "orange",
+"res://cells/": "pink",
 "res://grid_simulation/": "yellow",
 "res://grid_ui/": "green"
 }

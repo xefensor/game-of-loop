@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bk7vhjnhnuohm"
-path="res://.godot/imported/life.png-7d5efa556ccf2d4914c1d2a8ea68f4ff.ctex"
+path="res://.godot/imported/life.png-ef3612853b5318a6b5ad56f97b9dca3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://grid_ui/life/life.png"
-dest_files=["res://.godot/imported/life.png-7d5efa556ccf2d4914c1d2a8ea68f4ff.ctex"]
+source_file="res://cells/life/life.png"
+dest_files=["res://.godot/imported/life.png-ef3612853b5318a6b5ad56f97b9dca3e.ctex"]
 
 [params]
 

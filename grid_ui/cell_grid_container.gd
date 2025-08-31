@@ -9,17 +9,20 @@ var cells: Array[Array] = []
 
 func _ready() -> void:
 	center_container.resized.connect(update_grid_size)
-	create_cells(10, 10)
+	create_cells(3, 3)
 	
 	update_grid_size()
 	
 	
 	print(gen_zero.cells)
 	var sim: Simulation = Simulation.new()
-	sim.calculate_generations(5, gen_zero)
+	var generations = sim.calculate_generations(5, gen_zero)
 	
-
-
+	for gen in generations:
+		draw_generation(gen)
+		await get_tree().create_timer(1).timeout
+	
+	
 func update_grid_size() -> void:
 	if get_child_count() == 0:
 		custom_minimum_size = Vector2.ZERO
@@ -54,3 +57,19 @@ func create_cells(cols: int, rows: int):
 			row.append(cell)
 			add_child(cell)
 		cells.append(row)
+
+
+func draw_generation(generation: Generation):
+	var cols = generation.cells.size()
+	var rows = generation.cells[0].size()
+	
+	for y in rows:
+		for x in cols:
+			var texture = CellRegistry.cells[generation.cells[x][y]].texture
+			var animated_texture = RandomAnimatedTextureRect.new(texture)
+			if cells[x][y].get_children():
+				for child in cells[x][y].get_children():
+					child.queue_free()
+			
+			cells[x][y].add_child(animated_texture)
+			

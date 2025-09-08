@@ -5,7 +5,7 @@
 
 [sub_resource type="Resource" id="Resource_8d38g"]
 script = ExtResource("2_sh756")
-cells = Array[Array]([[0, 1, 0], [0, 1, 0], [0, 1, 0]])
+cells = Array[Array]([[1, 1, 1, 0, 0], [1, 1, 0, 0, 0], [0, 1, 1, 0, 0], [0, 1, 0, 1, 1], [0, 1, 0, 1, 1]])
 metadata/_custom_type_script = "uid://wlcus23mys50"
 
 [node name="GridControl" type="VBoxContainer"]

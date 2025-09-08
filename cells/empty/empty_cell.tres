@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_isrbc"]
 script = ExtResource("1_4ijep")
 neighbour = 1
-neighbour_count = Array[bool]([false, false, true, false, false, false, false, false])
+neighbour_count = Array[bool]([false, false, false, true, false, false, false, false, false])
 result_cell = 1
 metadata/_custom_type_script = "uid://dshdv4kchkjl7"
 

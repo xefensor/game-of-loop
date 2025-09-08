@@ -33,4 +33,4 @@ func get_transition_cell(neighbours_count: Dictionary, priority: Array) -> int:
 	if rule:
 		return rule.result_cell
 	else:
-		return CellRegistry.cells.find_key(self)
+		return 0

@@ -2,21 +2,21 @@ class_name CellGridContainer
 extends GridContainer
 
 
-var cells: Array[Array] = []
+var ui_cells: Array[Array] = []
 
 @onready var center_container: CenterContainer = get_parent()
 @export var gen_zero: Generation
 
 func _ready() -> void:
 	center_container.resized.connect(update_grid_size)
-	create_cells(3, 3)
+	create_cells(5, 5)
 	
 	update_grid_size()
 	
 	
 	print(gen_zero.cells)
 	var sim: Simulation = Simulation.new()
-	var generations = sim.calculate_generations(5, gen_zero)
+	var generations = sim.calculate_generations(20, gen_zero)
 	
 	for gen in generations:
 		draw_generation(gen)
@@ -46,7 +46,7 @@ func create_cells(cols: int, rows: int):
 	if get_child_count():
 		for child in get_children():
 			queue_free()
-	cells = []
+	ui_cells = []
 			
 	columns = cols
 	
@@ -56,7 +56,7 @@ func create_cells(cols: int, rows: int):
 			var cell = CellColorRect.new(Vector2i(x, y), Color.html("2e222f"))
 			row.append(cell)
 			add_child(cell)
-		cells.append(row)
+		ui_cells.append(row)
 
 
 func draw_generation(generation: Generation):
@@ -67,9 +67,10 @@ func draw_generation(generation: Generation):
 		for x in cols:
 			var texture = CellRegistry.cells[generation.cells[x][y]].texture
 			var animated_texture = RandomAnimatedTextureRect.new(texture)
-			if cells[x][y].get_children():
-				for child in cells[x][y].get_children():
+			if ui_cells[x][y].get_children():
+				for child in ui_cells[x][y].get_children():
 					child.queue_free()
 			
-			cells[x][y].add_child(animated_texture)
+			if generation.cells[x][y] != 0:
+				ui_cells[x][y].add_child(animated_texture)
 			

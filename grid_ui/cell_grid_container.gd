@@ -53,7 +53,7 @@ func create_cells(cols: int, rows: int):
 	for y in range(rows):
 		var row: Array = []
 		for x in range(cols):
-			var cell = CellColorRect.new(Vector2i(x, y), Color.html("2e222f"))
+			var cell = CellColorRect.new(Vector2i(y, x), Color.html("2e222f"))
 			row.append(cell)
 			add_child(cell)
 		ui_cells.append(row)
@@ -65,12 +65,12 @@ func draw_generation(generation: Generation):
 	
 	for y in rows:
 		for x in cols:
-			var texture = CellRegistry.cells[generation.cells[x][y]].texture
+			var texture = CellRegistry.cells[generation.cells[y][x]].texture
 			var animated_texture = RandomAnimatedTextureRect.new(texture)
-			if ui_cells[x][y].get_children():
-				for child in ui_cells[x][y].get_children():
+			if ui_cells[y][x].get_children():
+				for child in ui_cells[y][x].get_children():
 					child.queue_free()
 			
-			if generation.cells[x][y] != 0:
-				ui_cells[x][y].add_child(animated_texture)
+			if generation.cells[y][x] != 0:
+				ui_cells[y][x].add_child(animated_texture)
 			

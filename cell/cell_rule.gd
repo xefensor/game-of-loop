@@ -4,21 +4,15 @@ extends Resource
 
 @export var neighbour: int
 @export var neighbour_count: Array[bool] = [
-	false, false, false, false, false, false, false, false, false]
+	false, false, false, false, false, false, false, false]
 @export var result_cell: int
 #@export var transition
 
 
 func check_amount(neighbour_amount: int) -> bool:
-	var neighbour_number: PackedInt32Array
-	
 	for i in neighbour_count.size():
-		print(i)
 		if neighbour_count[i]:
-			neighbour_number.append(i)
-	
-	for i in neighbour_number:
-		if neighbour_amount == i:
-			return true
-	
+			if i+1 == neighbour_amount:
+				return true
+			
 	return false

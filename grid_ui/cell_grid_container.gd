@@ -2,10 +2,12 @@ class_name CellGridContainer
 extends GridContainer
 
 
+@export var gen_zero: Generation
+
 var ui_cells: Array[Array] = []
 
 @onready var center_container: CenterContainer = get_parent()
-@export var gen_zero: Generation
+
 
 func _ready() -> void:
 	center_container.resized.connect(update_grid_size)
@@ -13,10 +15,8 @@ func _ready() -> void:
 	
 	update_grid_size()
 	
-	
-	print(gen_zero.cells)
 	var sim: Simulation = Simulation.new()
-	var generations = sim.calculate_generations(20, gen_zero)
+	var generations = sim.calculate_generations(30, gen_zero)
 	
 	for gen in generations:
 		draw_generation(gen)
@@ -73,4 +73,3 @@ func draw_generation(generation: Generation):
 			
 			if generation.cells[y][x] != 0:
 				ui_cells[y][x].add_child(animated_texture)
-			

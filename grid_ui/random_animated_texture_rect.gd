@@ -1,5 +1,4 @@
 @tool
-
 class_name RandomAnimatedTextureRect
 extends AnimatedTextureRect
 
@@ -23,6 +22,3 @@ func _init(atlas_texture: AtlasTexture) -> void:
 func _ready() -> void:
 	super._ready()
 	frame = randi_range(0, _number_of_frames-1)
-	
-
-	

@@ -39,7 +39,6 @@ func next_generation(generation: Generation) -> Generation:
 			
 		new_generation.cells.append(row)
 
-	print(new_generation.cells)
 	return new_generation
 
 

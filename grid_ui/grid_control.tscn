@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://hfyv3i3s62f0" path="res://grid_ui/grid_control.gd" id="1_8d38g"]
 [ext_resource type="Script" uid="uid://wlcus23mys50" path="res://grid_simulation/generation.gd" id="2_sh756"]
 [ext_resource type="Script" uid="uid://bgusjoec83c0g" path="res://grid_ui/generation_control.gd" id="4_dtu0n"]
-[ext_resource type="Script" uid="uid://mmkaapilbjv4" path="res://grid_ui/SpeedControl.gd" id="4_gvvia"]
+[ext_resource type="Script" uid="uid://mmkaapilbjv4" path="res://grid_ui/speed_control.gd" id="4_gvvia"]
 
 [sub_resource type="Resource" id="Resource_8d38g"]
 script = ExtResource("2_sh756")

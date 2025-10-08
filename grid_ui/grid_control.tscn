@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://x284ob5ltoam"]
+[gd_scene load_steps=10 format=3 uid="uid://x284ob5ltoam"]
 
 [ext_resource type="Script" uid="uid://cl07g0v0smpt1" path="res://grid_ui/cell_grid_display.gd" id="1_0spup"]
 [ext_resource type="Script" uid="uid://hfyv3i3s62f0" path="res://grid_ui/grid_control.gd" id="1_8d38g"]
@@ -8,8 +8,17 @@
 
 [sub_resource type="Resource" id="Resource_8d38g"]
 script = ExtResource("2_sh756")
-cells = Array[Array]([[0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]])
+cells = Array[Array]([[0, 1, 1, 1, 0], [0, 0, 0, 0, 0], [0, 1, 0, 0, 1], [0, 0, 0, 0, 0], [1, 1, 1, 1, 0]])
 metadata/_custom_type_script = "uid://wlcus23mys50"
+
+[sub_resource type="SystemFont" id="SystemFont_gvvia"]
+font_names = PackedStringArray("JetBrains Mono")
+
+[sub_resource type="InputEventAction" id="InputEventAction_gvvia"]
+action = &"play_pause"
+
+[sub_resource type="Shortcut" id="Shortcut_ixnha"]
+events = [SubResource("InputEventAction_gvvia")]
 
 [node name="GridControl" type="VBoxContainer" node_paths=PackedStringArray("cell_grid_display", "generation_timer", "play_pause_button", "generation_control")]
 anchors_preset = 15
@@ -69,11 +78,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="PlayPauseButton" type="Button" parent="Controls/Playback"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_fonts/font = SubResource("SystemFont_gvvia")
 toggle_mode = true
-text = "Play/Pause"
+shortcut = SubResource("Shortcut_ixnha")
+text = "▶"
 
 [node name="VSeparator4" type="VSeparator" parent="Controls/Playback"]
 layout_mode = 2

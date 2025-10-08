@@ -1,6 +1,7 @@
 class_name GenerationControl
 extends HBoxContainer
 
+
 signal value_changed(generation_index: int)
 
 @export var spin_box: SpinBox
@@ -18,6 +19,8 @@ func set_up(min_index: int, max_index: int):
 	
 	h_slider.min_value = min_index
 	h_slider.max_value = max_index
+	
+	spin_box.suffix = "/" + str(max_index)
 
 
 func update_no_signal(value: int):

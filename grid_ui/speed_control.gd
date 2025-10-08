@@ -1,6 +1,7 @@
 class_name SpeedControl
 extends HBoxContainer
 
+
 signal value_changed(generation_index: int)
 
 @export var spin_box: SpinBox

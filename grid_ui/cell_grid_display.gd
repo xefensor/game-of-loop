@@ -1,6 +1,7 @@
 class_name CellGridDisplay
 extends GridContainer
 
+
 var ui_cells: Array[Array] = []
 
 @onready var parent_control: Control = get_parent()

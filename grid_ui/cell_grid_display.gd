@@ -1,26 +1,14 @@
-class_name CellGridContainer
+class_name CellGridDisplay
 extends GridContainer
-
-
-@export var gen_zero: Generation
 
 var ui_cells: Array[Array] = []
 
-@onready var center_container: CenterContainer = get_parent()
+@onready var parent_control: Control = get_parent()
 
 
 func _ready() -> void:
-	center_container.resized.connect(update_grid_size)
-	create_cells(5, 5)
-	
+	parent_control.resized.connect(update_grid_size)
 	update_grid_size()
-	
-	var sim: Simulation = Simulation.new()
-	var generations = sim.calculate_generations(30, gen_zero)
-	
-	for gen in generations:
-		draw_generation(gen)
-		await get_tree().create_timer(1).timeout
 	
 	
 func update_grid_size() -> void:
@@ -31,8 +19,8 @@ func update_grid_size() -> void:
 	var cols = columns
 	var rows = ceil(float(get_child_count()) / cols)
 
-	var available_width = center_container.size.x - get_theme_constant("v_separation") * (cols - 1)
-	var available_height = center_container.size.y - get_theme_constant("h_separation") * (rows - 1)
+	var available_width = parent_control.size.x - get_theme_constant("v_separation") * (cols - 1)
+	var available_height = parent_control.size.y - get_theme_constant("h_separation") * (rows - 1)
 
 	var cell_size = min(available_width / cols, available_height / rows)
 

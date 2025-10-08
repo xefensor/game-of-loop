@@ -1,19 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://x284ob5ltoam"]
+[gd_scene load_steps=7 format=3 uid="uid://x284ob5ltoam"]
 
-[ext_resource type="Script" uid="uid://cl07g0v0smpt1" path="res://grid_ui/cell_grid_container.gd" id="1_0spup"]
+[ext_resource type="Script" uid="uid://cl07g0v0smpt1" path="res://grid_ui/cell_grid_display.gd" id="1_0spup"]
+[ext_resource type="Script" uid="uid://hfyv3i3s62f0" path="res://grid_ui/grid_control.gd" id="1_8d38g"]
 [ext_resource type="Script" uid="uid://wlcus23mys50" path="res://grid_simulation/generation.gd" id="2_sh756"]
+[ext_resource type="Script" uid="uid://bgusjoec83c0g" path="res://grid_ui/generation_control.gd" id="4_dtu0n"]
+[ext_resource type="Script" uid="uid://mmkaapilbjv4" path="res://grid_ui/SpeedControl.gd" id="4_gvvia"]
 
 [sub_resource type="Resource" id="Resource_8d38g"]
 script = ExtResource("2_sh756")
-cells = Array[Array]([[0, 1, 1, 0, 1], [0, 1, 1, 1, 0], [0, 0, 0, 1, 0], [0, 0, 1, 0, 1], [1, 1, 1, 1, 0]])
+cells = Array[Array]([[0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]])
 metadata/_custom_type_script = "uid://wlcus23mys50"
 
-[node name="GridControl" type="VBoxContainer"]
+[node name="GridControl" type="VBoxContainer" node_paths=PackedStringArray("cell_grid_display", "generation_timer", "play_pause_button", "generation_control")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8d38g")
+gen_zero = SubResource("Resource_8d38g")
+cell_grid_display = NodePath("CenterContainer/CellGridDisplay")
+generation_timer = NodePath("Controls/Playback/Speed/GenerationTimer")
+play_pause_button = NodePath("Controls/Playback/PlayPauseButton")
+generation_control = NodePath("Controls/Playback/Generation")
+metadata/_custom_type_script = "uid://hfyv3i3s62f0"
 
 [node name="CellTypes" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -26,7 +36,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CellGridContainer" type="GridContainer" parent="CenterContainer"]
+[node name="CellGridDisplay" type="GridContainer" parent="CenterContainer"]
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -34,18 +44,18 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 3
 script = ExtResource("1_0spup")
-gen_zero = SubResource("Resource_8d38g")
+metadata/_custom_type_script = "uid://cl07g0v0smpt1"
 
 [node name="Controls" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Reset" type="Button" parent="Controls"]
+[node name="ResetButton" type="Button" parent="Controls"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Reset"
 
-[node name="Edit" type="Button" parent="Controls"]
+[node name="EditButton" type="Button" parent="Controls"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -54,39 +64,84 @@ text = "Edit"
 [node name="VSeparator" type="VSeparator" parent="Controls"]
 layout_mode = 2
 
-[node name="PlayPause" type="Button" parent="Controls"]
+[node name="Playback" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayPauseButton" type="Button" parent="Controls/Playback"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
 text = "Play/Pause"
 
-[node name="GenerationTimeline" type="HSlider" parent="Controls"]
+[node name="VSeparator4" type="VSeparator" parent="Controls/Playback"]
+layout_mode = 2
+
+[node name="Speed" type="HBoxContainer" parent="Controls/Playback" node_paths=PackedStringArray("spin_box", "h_slider", "timer")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_gvvia")
+spin_box = NodePath("SpinBox")
+h_slider = NodePath("HSlider")
+timer = NodePath("GenerationTimer")
+metadata/_custom_type_script = "uid://mmkaapilbjv4"
+
+[node name="Label" type="Label" parent="Controls/Playback/Speed"]
+layout_mode = 2
+text = "Generation speed:"
+
+[node name="SpinBox" type="SpinBox" parent="Controls/Playback/Speed"]
+layout_mode = 2
+min_value = 0.1
+max_value = 1.0
+step = 0.1
+value = 0.5
+custom_arrow_step = 0.1
+
+[node name="HSlider" type="HSlider" parent="Controls/Playback/Speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.1
+max_value = 1.0
+step = 0.1
+value = 0.1
+tick_count = 1
+ticks_on_borders = true
+
+[node name="GenerationTimer" type="Timer" parent="Controls/Playback/Speed"]
+wait_time = 0.5
+
+[node name="VSeparator3" type="VSeparator" parent="Controls/Playback"]
+layout_mode = 2
+
+[node name="Generation" type="HBoxContainer" parent="Controls/Playback" node_paths=PackedStringArray("spin_box", "h_slider")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_dtu0n")
+spin_box = NodePath("SpinBox")
+h_slider = NodePath("HSlider")
+metadata/_custom_type_script = "uid://bgusjoec83c0g"
+
+[node name="Label" type="Label" parent="Controls/Playback/Generation"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Generation:"
+
+[node name="SpinBox" type="SpinBox" parent="Controls/Playback/Generation"]
+layout_mode = 2
+max_value = 10.0
+rounded = true
+custom_arrow_step = 1.0
+
+[node name="HSlider" type="HSlider" parent="Controls/Playback/Generation"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 10.0
 tick_count = 1
 ticks_on_borders = true
-
-[node name="GenerationCount" type="Label" parent="Controls"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Generation: 0/100"
-
-[node name="GenerationSpeed" type="VBoxContainer" parent="Controls"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GenerationSpeedLabel" type="Label" parent="Controls/GenerationSpeed"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-text = "Generation Speed"
-
-[node name="GenerationSpeedSlider" type="HSlider" parent="Controls/GenerationSpeed"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
 
 [node name="VSeparator2" type="VSeparator" parent="Controls"]
 layout_mode = 2

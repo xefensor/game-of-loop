@@ -17,7 +17,7 @@ func setup(_cells: Dictionary, _priority: Array, generation_zero: Generation) ->
 func calculate_generations(number_of_generations: int, generation_zero: Generation) -> Array:
 	var _generations: Array[Generation] = [generation_zero.duplicate()]
 	
-	for i in number_of_generations-1:
+	for i in number_of_generations:
 		_generations.append(next_generation(_generations[i]))
 	
 	return _generations

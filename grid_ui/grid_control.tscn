@@ -13,6 +13,7 @@ metadata/_custom_type_script = "uid://wlcus23mys50"
 
 [sub_resource type="SystemFont" id="SystemFont_gvvia"]
 font_names = PackedStringArray("JetBrains Mono")
+subpixel_positioning = 0
 
 [sub_resource type="InputEventAction" id="InputEventAction_gvvia"]
 action = &"play_pause"
@@ -20,7 +21,7 @@ action = &"play_pause"
 [sub_resource type="Shortcut" id="Shortcut_ixnha"]
 events = [SubResource("InputEventAction_gvvia")]
 
-[node name="GridControl" type="VBoxContainer" node_paths=PackedStringArray("cell_grid_display", "generation_timer", "play_pause_button", "generation_control")]
+[node name="GridControl" type="VBoxContainer" node_paths=PackedStringArray("cell_grid_display", "generation_timer", "play_pause_button", "generation_control", "edit_button", "reset_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,6 +33,8 @@ cell_grid_display = NodePath("CenterContainer/CellGridDisplay")
 generation_timer = NodePath("Controls/Playback/Speed/GenerationTimer")
 play_pause_button = NodePath("Controls/Playback/PlayPauseButton")
 generation_control = NodePath("Controls/Playback/Generation")
+edit_button = NodePath("Controls/EditButton")
+reset_button = NodePath("Controls/ResetButton")
 metadata/_custom_type_script = "uid://hfyv3i3s62f0"
 
 [node name="CellTypes" type="HBoxContainer" parent="."]
@@ -68,6 +71,9 @@ text = "Reset"
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+disabled = true
+toggle_mode = true
+button_pressed = true
 text = "Edit"
 
 [node name="VSeparator" type="VSeparator" parent="Controls"]
@@ -88,6 +94,36 @@ shortcut = SubResource("Shortcut_ixnha")
 text = "▶"
 
 [node name="VSeparator4" type="VSeparator" parent="Controls/Playback"]
+layout_mode = 2
+
+[node name="Generation" type="HBoxContainer" parent="Controls/Playback" node_paths=PackedStringArray("spin_box", "h_slider")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_dtu0n")
+spin_box = NodePath("SpinBox")
+h_slider = NodePath("HSlider")
+metadata/_custom_type_script = "uid://bgusjoec83c0g"
+
+[node name="Label" type="Label" parent="Controls/Playback/Generation"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Generation:"
+
+[node name="SpinBox" type="SpinBox" parent="Controls/Playback/Generation"]
+layout_mode = 2
+max_value = 10.0
+rounded = true
+custom_arrow_step = 1.0
+
+[node name="HSlider" type="HSlider" parent="Controls/Playback/Generation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 10.0
+tick_count = 1
+ticks_on_borders = true
+
+[node name="VSeparator3" type="VSeparator" parent="Controls/Playback"]
 layout_mode = 2
 
 [node name="Speed" type="HBoxContainer" parent="Controls/Playback" node_paths=PackedStringArray("spin_box", "h_slider", "timer")]
@@ -126,36 +162,6 @@ ticks_on_borders = true
 [node name="GenerationTimer" type="Timer" parent="Controls/Playback/Speed"]
 wait_time = 0.5
 
-[node name="VSeparator3" type="VSeparator" parent="Controls/Playback"]
-layout_mode = 2
-
-[node name="Generation" type="HBoxContainer" parent="Controls/Playback" node_paths=PackedStringArray("spin_box", "h_slider")]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("4_dtu0n")
-spin_box = NodePath("SpinBox")
-h_slider = NodePath("HSlider")
-metadata/_custom_type_script = "uid://bgusjoec83c0g"
-
-[node name="Label" type="Label" parent="Controls/Playback/Generation"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Generation:"
-
-[node name="SpinBox" type="SpinBox" parent="Controls/Playback/Generation"]
-layout_mode = 2
-max_value = 10.0
-rounded = true
-custom_arrow_step = 1.0
-
-[node name="HSlider" type="HSlider" parent="Controls/Playback/Generation"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-max_value = 10.0
-tick_count = 1
-ticks_on_borders = true
-
 [node name="VSeparator2" type="VSeparator" parent="Controls"]
 layout_mode = 2
 
@@ -163,4 +169,5 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+disabled = true
 text = "Next Level"

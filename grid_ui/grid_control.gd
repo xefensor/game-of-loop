@@ -54,6 +54,13 @@ func _input(event: InputEvent) -> void:
 		generation_index -= 1
 
 
+func switch_to_edit_mode():
+	generations = []
+	edit_button.disabled = true
+	play_pause_button.button_pressed = false
+	generation_index = 0
+
+
 func calculate_generations(num_of_gen: int, _gen_zero: Generation):
 	var sim: Simulation = Simulation.new()
 	generations = sim.calculate_generations(num_of_gen, _gen_zero)
@@ -78,10 +85,10 @@ func _on_play_pause_toggled(toggled_on: bool) -> void:
 		play_pause_button.text = "▶"
 		generation_timer.stop()
 		return
-		
+	
 	if generations.is_empty():
 		calculate_generations(max_generations, gen_zero)
-		
+	
 	if generation_index == max_generations:
 		generation_index = 0
 
@@ -100,16 +107,9 @@ func _on_generation_value_changed(_generation_index: int) -> void:
 func _on_edit_button_toggled(toggled_on: bool) -> void:
 	if not toggled_on:
 		return
-	edit_mode()
+	switch_to_edit_mode()
 
 
 func _on_reset_button_pressed() -> void:
 	#gen_zero.cells = []
-	edit_mode()
-	
-	
-func edit_mode():
-	generations = []
-	edit_button.disabled = true
-	play_pause_button.button_pressed = false
-	generation_index = 0
+	switch_to_edit_mode()

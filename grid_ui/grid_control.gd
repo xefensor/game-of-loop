@@ -10,6 +10,7 @@ extends VBoxContainer
 @export var generation_control: GenerationControl
 @export var edit_button: Button
 @export var reset_button: Button
+@export var loop_button: Button
 
 var generation_index: int = 0:
 	set(new_val):
@@ -74,9 +75,13 @@ func draw_generation(generation: Generation):
 
 
 func _on_generation_timer_timeout() -> void:
+	if loop_button.button_pressed and generation_index == max_generations:
+		generation_index = 0
+		return
+	
 	generation_index += 1
 	
-	if generation_index == max_generations:
+	if not loop_button.button_pressed and generation_index == max_generations:
 		play_pause_button.button_pressed = false
 
 

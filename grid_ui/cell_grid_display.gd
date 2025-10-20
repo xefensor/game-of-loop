@@ -31,7 +31,7 @@ func update_grid_size() -> void:
 	custom_minimum_size = Vector2(total_width-cols, total_height-rows)
 
 
-func create_cells(cols: int, rows: int):
+func create_cells(cols: int, rows: int) -> void:
 	if get_child_count():
 		for child in get_children():
 			queue_free()
@@ -48,7 +48,7 @@ func create_cells(cols: int, rows: int):
 		ui_cells.append(row)
 
 
-func draw_generation(generation: Generation):
+func draw_generation(generation: Generation) -> void:
 	var cols = generation.cells.size()
 	var rows = generation.cells[0].size()
 	

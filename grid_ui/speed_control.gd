@@ -16,7 +16,7 @@ func _ready() -> void:
 	update_no_signal(timer.wait_time)
 
 
-func set_up(min_index: float, max_index: float):
+func set_up(min_index: float, max_index: float) -> void:
 	spin_box.min_value = min_index
 	spin_box.max_value = max_index
 	
@@ -24,7 +24,7 @@ func set_up(min_index: float, max_index: float):
 	h_slider.max_value = max_index
 
 
-func update_no_signal(value: float):
+func update_no_signal(value: float) -> void:
 	spin_box.set_value_no_signal(value)
 	h_slider.set_value_no_signal(value)
 

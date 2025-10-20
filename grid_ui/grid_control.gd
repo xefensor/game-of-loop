@@ -55,14 +55,14 @@ func _input(event: InputEvent) -> void:
 		generation_index -= 1
 
 
-func switch_to_edit_mode():
+func switch_to_edit_mode() -> void:
 	generations = []
 	edit_button.disabled = true
 	play_pause_button.button_pressed = false
 	generation_index = 0
 
 
-func calculate_generations(num_of_gen: int, _gen_zero: Generation):
+func calculate_generations(num_of_gen: int, _gen_zero: Generation) -> void:
 	var sim: Simulation = Simulation.new()
 	generations = sim.calculate_generations(num_of_gen, _gen_zero)
 	
@@ -70,7 +70,7 @@ func calculate_generations(num_of_gen: int, _gen_zero: Generation):
 	edit_button.button_pressed = false
 
 
-func draw_generation(generation: Generation):
+func draw_generation(generation: Generation) -> void:
 	cell_grid_display.draw_generation(generation)
 
 

@@ -13,7 +13,7 @@ func _ready() -> void:
 	h_slider.value_changed.connect(_on_h_slider_value_changed)
 
 
-func set_up(min_index: int, max_index: int):
+func set_up(min_index: int, max_index: int) -> void:
 	spin_box.min_value = min_index
 	spin_box.max_value = max_index
 	
@@ -23,7 +23,7 @@ func set_up(min_index: int, max_index: int):
 	spin_box.suffix = "/" + str(max_index)
 
 
-func update_no_signal(value: int):
+func update_no_signal(value: int) -> void:
 	h_slider.set_value_no_signal(value)
 	spin_box.set_value_no_signal(value)
 

@@ -10,7 +10,7 @@ extends Resource
 func get_rules_by_priority(priority: Array) -> Array:
 	var rules_by_priority: Array[CellRule] = []
 	
-	for i in priority:
+	for i: int in priority:
 		for rule in rules:
 			if i == rule.neighbour:
 				rules_by_priority.append(rule)
@@ -20,7 +20,7 @@ func get_rules_by_priority(priority: Array) -> Array:
 
 
 func get_transition_rule(neighbours_count: Dictionary, rules_by_priority: Array) -> CellRule:
-	for rule in rules_by_priority:
+	for rule: CellRule in rules_by_priority:
 		if neighbours_count.has(rule.neighbour):
 			if rule.check_amount(neighbours_count[rule.neighbour]):
 				return rule
@@ -29,7 +29,7 @@ func get_transition_rule(neighbours_count: Dictionary, rules_by_priority: Array)
 
 
 func get_transition_cell(neighbours_count: Dictionary, priority: Array) -> int:
-	var rule = get_transition_rule(neighbours_count, get_rules_by_priority(priority))
+	var rule: CellRule = get_transition_rule(neighbours_count, get_rules_by_priority(priority))
 	
 	if rule:
 		return rule.result_cell

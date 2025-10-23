@@ -25,16 +25,16 @@ func calculate_generations(number_of_generations: int, generation_zero: Generati
 	
 func next_generation(generation: Generation) -> Generation:
 	var new_generation: Generation = Generation.new()
-	var cols = generation.cells.size()
-	var rows = generation.cells[0].size()
+	var cols: int = generation.cells.size()
+	var rows: int = generation.cells[0].size()
 	
-	for y in rows:
+	for y: int in rows:
 		var row: Array = []
 		for x in cols:
 			var old_cell: Cell = CellRegistry.cells[generation.cells[y][x]]
-			var neighbours = get_neighbours(generation, Vector2i(y, x))
-			var neigbours_count = get_neighbours_count(neighbours)
-			var new_cell = old_cell.get_transition_cell(neigbours_count, CellRegistry.priority)
+			var neighbours: PackedInt64Array = get_neighbours(generation, Vector2i(y, x))
+			var neigbours_count: Dictionary = get_neighbours_count(neighbours)
+			var new_cell: int = old_cell.get_transition_cell(neigbours_count, CellRegistry.priority)
 			row.append(new_cell)
 			
 		new_generation.cells.append(row)
@@ -44,15 +44,15 @@ func next_generation(generation: Generation) -> Generation:
 
 func get_neighbours(generation: Generation, position: Vector2i) -> Array:
 	var neighbours: Array = []
-	var cols = generation.cells.size()
-	var rows = generation.cells[0].size()
+	var cols: int = generation.cells.size()
+	var rows: int = generation.cells[0].size()
 
 	for dy in range(-1, 2):  # -1, 0, 1
 		for dx in range(-1, 2):
 			if dx == 0 and dy == 0:
 				continue
-			var nx = position.x + dx
-			var ny = position.y + dy
+			var nx: int = position.x + dx
+			var ny: int = position.y + dy
 			if nx >= 0 and nx < cols and ny >= 0 and ny < rows:
 				neighbours.append(generation.cells[nx][ny])
 
@@ -62,7 +62,7 @@ func get_neighbours(generation: Generation, position: Vector2i) -> Array:
 func get_neighbours_count(neighbours: Array) -> Dictionary:
 	var neighbours_count: Dictionary
 	
-	for neighbour in neighbours:
+	for neighbour: int in neighbours:
 		if neighbours_count.has(neighbour):
 			neighbours_count[neighbour] += 1
 		else:
